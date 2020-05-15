@@ -1,7 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 img {
-  width: 800px;
+  width: 100%;
+  display: block;
 }
 
 ion-icon {
-  font-size: 45px;
+  font-size: 90px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+ion-icon:active {
+  transform: scale(1.05);
+}
+
+.image-container {
+  position: relative;
+  height: 100%;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.img-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
 }

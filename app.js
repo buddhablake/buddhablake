@@ -19,28 +19,44 @@ $(() => {
           //creates and appends image(s)
           const $imageContainer = $("<div>")
             .addClass("image-container")
-            .appendTo($(".images-container"));
+            .appendTo($(".images-container"))
+            .hover(
+              () => {
+                $imgOptions.slideDown(100);
+              },
+              () => {
+                $imgOptions.slideUp(100);
+              }
+            );
 
           //creates the image
           const $image = $("<img>")
             .attr("src", images.photos[i].src.original)
             .appendTo($imageContainer);
 
+          console.log(images.photos[i]);
           //creates imgOptions div to store user options
           const $imgOptions = $("<div>")
             .addClass("img-options")
+            .hide()
             .appendTo($imageContainer);
 
           //Creates imgLink/imgTag buttons on hover
           //imgLink
-          const $imgLink = $("<a>")
-            .attr("href", images.photos[i].src.original)
-            .appendTo($imgOptions);
+          // const $imgLink = $("<a>")
+          //   .attr("href", images.photos[i].src.original)
+          //   .appendTo($imgOptions);
 
           //creates the imgLink icon
           const $imgLinkIcon = $("<ion-icon>")
             .attr("name", "link-outline")
-            .appendTo($imgLink);
+            .appendTo($imgOptions)
+            .on("click", () => {
+              let $tempForCopy = $("<input>").appendTo($("body"));
+              $tempForCopy.val(images.photos[i].src.original).select();
+              document.execCommand("copy");
+              $tempForCopy.remove();
+            });
 
           //imgTag
           const $imgTag = $("<div>")
