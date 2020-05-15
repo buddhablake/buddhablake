@@ -14,5 +14,5 @@ $(() => {
 
   //event listeners
   $("#next-btn").on("click", carouselNext);
-  $("#prev-btn").on("click", carouselPrev);
+  // $("#prev-btn").on("click", carouselPrev);
 });
