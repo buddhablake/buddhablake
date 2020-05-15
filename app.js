@@ -9,10 +9,14 @@ $(() => {
     beforeSend: function (auth) {
       auth.setRequestHeader("Authorization", key);
     },
-    url: `https://api.pexels.com/v1/search?query=tiger&per_page=5&page=1`,
+    url: `https://api.pexels.com/v1/search?query=people smiling&per_page=1&page=1`,
   }).then(
-    (data) => {
-      console.log(data);
+    (images) => {
+      console.log(images);
+
+      const $image = $("<img>")
+        .attr("src", images.photos[0].src.original)
+        .appendTo($("body"));
     },
     (error) => {
       console.log(error);
