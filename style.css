@@ -5,8 +5,10 @@
 }
 
 img {
+  height: 500px;
   width: 100%;
   display: block;
+  object-fit: cover;
 }
 
 ion-icon {
@@ -19,12 +21,25 @@ ion-icon:active {
   transform: scale(1.05);
 }
 
-.image-container {
+.images-container {
   position: relative;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 35% auto 15% auto;
+}
+
+.image-container {
+  position: absolute;
+  height: auto;
   width: 90%;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
+  display: none;
+}
+
+.image-container:first-of-type {
+  display: block;
 }
 
 .img-options {
