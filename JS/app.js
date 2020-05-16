@@ -7,7 +7,7 @@ $(() => {
 
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
     const userQuery = $("input").val() || "mountains";
-    $("input").val("");
+
     $.ajax({
       method: "GET",
       beforeSend: function (auth) {
@@ -18,7 +18,11 @@ $(() => {
       (images) => {
         console.log(images);
         if (images.photos.length <= 0) {
-          $("body").html("<h1>Why????? Why??????</h1>");
+          $(".images-container").html(
+            `<h1>"${$(
+              "input"
+            ).val()}"</h1> <h2>didn't return any results. Check your spelling and try again.</h2>`
+          );
         } else {
           for (let i = 0; i < 30; i++) {
             //creates and appends image(s)
@@ -84,9 +88,10 @@ $(() => {
               });
           }
         }
+        $("input").val("");
       },
       (error) => {
-        $("body").html("<h1>Why????? Why??????</h1>");
+        $(".images-container").html("<h1>Why????? Why??????</h1>");
       }
     );
   };
