@@ -3,6 +3,7 @@ $(() => {
   //lets call the pexels api
 
   const getImages = (e) => {
+    $(".images-container").empty();
     e.preventDefault();
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
     const userQuery = $("input").val();
@@ -12,13 +13,13 @@ $(() => {
       beforeSend: function (auth) {
         auth.setRequestHeader("Authorization", key);
       },
-      url: `https://api.pexels.com/v1/search?query=${userQuery}&per_page=5&page=1`,
+      url: `https://api.pexels.com/v1/search?query=${userQuery}&per_page=30&page=1`,
     }).then(
       (images) => {
         if (images.photos.length <= 0) {
           $("body").html("<h1>Why????? Why??????</h1>");
         } else {
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 30; i++) {
             //creates and appends image(s)
             const $imageContainer = $("<div>")
               .addClass("image-container")
