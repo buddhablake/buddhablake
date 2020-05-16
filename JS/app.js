@@ -34,6 +34,10 @@ $(() => {
               .addClass("image-container")
               .css("background-image", `url(${$imgSrc})`)
               .appendTo($(".images-container"));
+            //
+            // const $image = $("<img>")
+            //   .attr("src", $imgSrc)
+            //   .appendTo($imageContainer);
 
             //creates link back to photographer
             const $photographerLink = $('<a target="_blank">')
@@ -45,6 +49,7 @@ $(() => {
             //creates imgOptions div to store user options
             const $imgOptions = $("<div>")
               .addClass("img-options")
+
               .appendTo($imageContainer);
 
             //creates the imgLink icon
