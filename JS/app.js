@@ -3,6 +3,7 @@ $(() => {
   //lets call the pexels api
 
   const getImages = (e) => {
+    $(".spell-check").remove();
     $(".images-container").empty();
 
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
@@ -17,14 +18,15 @@ $(() => {
     }).then(
       (images) => {
         console.log(images);
+
+        $("header").animate({ height: "20vh" }, 200);
+
         if (images.photos.length <= 0) {
-          $(".images-container").html(
-            `<h1>"${$(
-              "input"
-            ).val()}"</h1> <h2>didn't return any results. Check your spelling and try again.</h2>`
-          );
+          spellCheck();
         } else {
           for (let i = 0; i < 30; i++) {
+            $(".images-container").show(200);
+            $(".controls").css("display", "flex").show(200);
             //creates and appends image(s)
 
             //creates the image
@@ -90,6 +92,21 @@ $(() => {
     );
   };
 
+  const spellCheck = () => {
+    const $spellCheckMsg = $("<div>")
+      .addClass("spell-check")
+      .html(
+        `<h1>"${$(
+          "input"
+        ).val()}"</h1> <h2>didn't return any results. Check your spelling and try again.</h2>`
+      )
+      .appendTo($("body"));
+
+    const $spellCheckImg = $("<img>")
+      .attr("src", "images/ask-blackboard-chalk-board-chalkboard-356079.jpg")
+      .appendTo($spellCheckMsg);
+  };
+
   //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
 
   $("form").on("submit", (e) => {
@@ -97,9 +114,5 @@ $(() => {
     e.preventDefault();
   });
 
-  getImages();
-  // getImages();
-
   //end before
 });
-// Object.entries(images)[3][1][3].src.original
