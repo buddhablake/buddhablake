@@ -7,7 +7,7 @@
   font-family: "Work Sans", sans-serif;
 }
 body {
-  background: white;
+  background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,10 +15,16 @@ body {
   height: auto;
 }
 
+header {
+  background: black;
+  height: 300px;
+  width: 100%;
+}
+
 form {
   width: 100%;
   text-align: center;
-  margin: 100px auto 50px auto;
+  margin: 100px auto 0 auto;
 }
 
 input {
@@ -30,13 +36,6 @@ input {
   font-size: 2.5em;
   padding-left: 1em;
   line-height: 70px;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
 }
 
 ion-icon {
@@ -51,21 +50,19 @@ ion-icon:active {
 
 .images-container {
   position: relative;
-  width: 75%;
-  margin: 100px auto 50px auto;
-  height: 500px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px; */
+  width: 100%;
+  margin: 0 auto 50px auto;
+  height: 700px;
 }
 
 .image-container {
   position: absolute;
   width: 100%;
-  height: 500px;
+  height: 700px;
   display: none;
-  box-shadow: 10px 10px 10px black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .image-container:first-of-type {
@@ -75,7 +72,7 @@ ion-icon:active {
 .photographer {
   position: absolute;
   bottom: 10px;
-  right: 20px;
+  left: 10px;
   color: white;
   font-size: 1.2em;
   z-index: 2;
@@ -83,15 +80,9 @@ ion-icon:active {
 
 .img-options {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  width: 100%;
-  display: flex;
+  top: 15px;
+  right: 25px;
   color: white;
-  justify-content: center;
-  align-items: center;
 }
 
 .controls {
@@ -108,8 +99,8 @@ ion-icon:active {
   user-select: none;
   cursor: pointer;
   border: none;
-  background: black;
-  color: white;
+  background: grey;
+  color: black;
   border-radius: 40px;
   font-size: 2em;
   box-shadow: 5px 5px 7px grey;

@@ -26,24 +26,14 @@ $(() => {
         } else {
           for (let i = 0; i < 30; i++) {
             //creates and appends image(s)
-            const $imageContainer = $("<div>")
-              .addClass("image-container")
-              .appendTo($(".images-container"))
-              .hover(
-                () => {
-                  $imgOptions.slideDown(100);
-                },
-                () => {
-                  $imgOptions.slideUp(100);
-                }
-              );
 
             //creates the image
             const $imgSrc = images.photos[i].src.large2x;
 
-            const $image = $("<img>")
-              .attr("src", $imgSrc)
-              .appendTo($imageContainer);
+            const $imageContainer = $("<div>")
+              .addClass("image-container")
+              .css("background-image", `url(${$imgSrc})`)
+              .appendTo($(".images-container"));
 
             //creates link back to photographer
             const $photographerLink = $('<a target="_blank">')
@@ -55,7 +45,6 @@ $(() => {
             //creates imgOptions div to store user options
             const $imgOptions = $("<div>")
               .addClass("img-options")
-              .hide()
               .appendTo($imageContainer);
 
             //creates the imgLink icon
