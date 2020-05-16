@@ -4,10 +4,10 @@ $(() => {
 
   const getImages = (e) => {
     $(".images-container").empty();
-    e.preventDefault();
-    const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
-    const userQuery = $("input").val();
 
+    const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
+    const userQuery = $("input").val() || "mountains";
+    $("input").val("");
     $.ajax({
       method: "GET",
       beforeSend: function (auth) {
@@ -16,6 +16,7 @@ $(() => {
       url: `https://api.pexels.com/v1/search?query=${userQuery}&per_page=30&page=1`,
     }).then(
       (images) => {
+        console.log(images);
         if (images.photos.length <= 0) {
           $("body").html("<h1>Why????? Why??????</h1>");
         } else {
@@ -40,17 +41,18 @@ $(() => {
               .attr("src", $imgSrc)
               .appendTo($imageContainer);
 
+            //creates link back to photographer
+            const $photographerLink = $('<a target="_blank">')
+              .addClass("photographer")
+              .text(images.photos[i].photographer)
+              .attr("href", images.photos[i].photographer_url)
+              .appendTo($imageContainer);
+
             //creates imgOptions div to store user options
             const $imgOptions = $("<div>")
               .addClass("img-options")
               .hide()
               .appendTo($imageContainer);
-
-            //Creates imgLink/imgTag buttons on hover
-            //imgLink
-            // const $imgLink = $("<a>")
-            //   .attr("href", images.photos[i].src.original)
-            //   .appendTo($imgOptions);
 
             //creates the imgLink icon
             const $imgLinkIcon = $("<ion-icon>")
@@ -91,8 +93,12 @@ $(() => {
 
   //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
 
-  $("form").on("submit", getImages);
+  $("form").on("submit", (e) => {
+    getImages();
+    e.preventDefault();
+  });
 
+  getImages();
   // getImages();
 
   //end before
