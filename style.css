@@ -106,15 +106,15 @@ ion-icon:active {
   background: grey;
   color: black;
   font-size: 2em;
-  box-shadow: 5px 5px 7px grey;
+
   transition: all 0.1s ease;
   outline: 0;
 }
 
 #prev-btn:active,
 #next-btn:active {
-  box-shadow: none;
-  transform: scale(0.99);
+  background: black;
+  color: white;
 }
 
 footer {
