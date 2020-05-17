@@ -6,7 +6,7 @@ $(() => {
   $("header").css("height", `${$height}px`);
 
   const getImages = (e) => {
-    $(".spell-check").remove();
+    $(".spell-check-container").remove();
     $(".images-container").empty();
 
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
@@ -25,10 +25,14 @@ $(() => {
         $("header")
           .animate({ height: $height * 0.15 }, 200)
           .attr("id", "small")
-          .css("background", "black");
+          .addClass("secondary-header");
+
+        $(".background-filter").addClass("secondary-filter");
+
+        $("input").addClass("secondary-input");
 
         $(".h1-header").remove();
-        $(".logo").remove();
+        // $(".logo").remove();
 
         if (images.photos.length <= 0) {
           spellCheck();
@@ -69,7 +73,7 @@ $(() => {
 
               .appendTo($imageContainer);
 
-            //creates the imgLink icon
+            //creates the imgLink icon and c2c functionality
             const $imgLinkIcon = $("<ion-icon>")
               .attr("name", "link-outline")
               .appendTo($imgOptions)
@@ -87,7 +91,7 @@ $(() => {
               .hide()
               .appendTo($imgOptions);
 
-            //creates the imgTag Icon
+            //creates the imgTag Icon and c2c functionality
             const $imgTagIcon = $("<ion-icon>")
               .attr("name", "code-slash-outline")
               .appendTo($imgOptions)
@@ -97,6 +101,11 @@ $(() => {
                 document.execCommand("copy");
                 $tempForCopy.remove();
               });
+
+            //create the expand icon and c2c functionality
+            const $imgDownloadIcon = $(`<a href="${$imgSrc}" target="_blank">`)
+              .html(`<ion-icon name="expand-outline"></ion-icon>`)
+              .appendTo($imgOptions);
           }
         }
         $("input").val("");
@@ -108,18 +117,16 @@ $(() => {
   };
 
   const spellCheck = () => {
+    $(".images-container").hide();
+    $(".controls").hide();
     const $spellCheckMsg = $("<div>")
-      .addClass("spell-check")
+      .addClass("spell-check-container")
       .html(
-        `<h1>"${$(
+        `<div class="spell-check-msg"><h1>"${$(
           "input"
-        ).val()}"</h1> <h2>didn't return any results. Check your spelling and try again.</h2>`
+        ).val()}"</h1> <h2>didn't return any results. Check your spelling and try again.</h2></div>`
       )
       .appendTo($("body"));
-
-    const $spellCheckImg = $("<img>")
-      .attr("src", "images/ask-blackboard-chalk-board-chalkboard-356079.jpg")
-      .appendTo($spellCheckMsg);
   };
 
   const resizeElems = () => {
