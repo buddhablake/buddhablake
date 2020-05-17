@@ -8,7 +8,11 @@
   <body>
     <header>
       <div class="background-filter">
-        <img src="images/logo.png" class="logo" alt="" />
+        <!-- Thanks to: https://stackoverflow.com/questions/8174282/link-to-reload-current-page for this neat little trick. Eventually the href would just be http://homepageurl.com, but since this code is currently running locally and on github pages i needed a solution that would work for both regardless of url -->
+        <a href="javascript:window.location.reload(true)"
+          ><img src="images/logo.png" class="logo" alt=""
+        /></a>
+
         <h1 class="h1-header">Beautiful placeholder images in one click.</h1>
         <form>
           <input type="text" name="" value="" placeholder="search" />
