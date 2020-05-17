@@ -16,13 +16,35 @@ body {
 }
 
 header {
-  background: white;
-
+  background-image: url("images/photo-of-person-holding-camera-3014011.jpg");
+  background-size: cover;
+  background-position: bottom;
   width: 100%;
-  background: black;
+  text-align: center;
+  color: white;
+  /* height: 100vh; */
+}
+
+.background-filter {
+  background: rgba(0, 0, 0, 0.5);
+  height: inherit;
+  width: inherit;
   display: flex;
   align-items: center;
-  /* height: 100vh; */
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 500px;
+  max-width: 75%;
+  justify-self: flex-start;
+}
+
+.h1-header {
+  font-size: 3em;
+  padding: 20px;
+  margin-bottom: 4em;
 }
 
 form {

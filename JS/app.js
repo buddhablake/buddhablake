@@ -23,15 +23,19 @@ $(() => {
         console.log(images);
 
         $("header")
-          .animate({ height: $height * 0.2 }, 200)
-          .attr("id", "small");
+          .animate({ height: $height * 0.15 }, 200)
+          .attr("id", "small")
+          .css("background", "black");
+
+        $(".h1-header").remove();
+        $(".logo").remove();
 
         if (images.photos.length <= 0) {
           spellCheck();
         } else {
           for (let i = 0; i < 30; i++) {
             $(".images-container")
-              .css("height", $height * 0.7)
+              .css("height", $height * 0.75)
               .show();
             $(".controls")
               .css("display", "flex")
@@ -44,7 +48,7 @@ $(() => {
 
             const $imageContainer = $("<div>")
               .addClass("image-container")
-              .css("height", $height * 0.7)
+              .css("height", $height * 0.75)
               .css("background-image", `url(${$imgSrc})`)
               .appendTo($(".images-container"));
             //
@@ -122,11 +126,11 @@ $(() => {
     $height = $(window).innerHeight();
     setTimeout(() => {
       if ($("header").attr("id") === "small") {
-        $("header").css("height", $height * 0.2);
+        $("header").css("height", $height * 0.15);
 
-        $(".images-container").css("height", $height * 0.7);
+        $(".images-container").css("height", $height * 0.75);
 
-        $(".image-container").css("height", $height * 0.7);
+        $(".image-container").css("height", $height * 0.75);
 
         $(".controls").css("height", $height * 0.1);
       } else {
