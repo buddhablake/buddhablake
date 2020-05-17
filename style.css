@@ -82,19 +82,6 @@ input {
   padding-left: 1em;
   line-height: 40px;
 }
-a > ion-con,
-ion-icon {
-  font-size: 60px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: all 0.1s ease;
-  text-decoration: none;
-  color: white;
-}
-
-ion-icon:active {
-  transform: scale(1.05);
-}
 
 .images-container {
   position: relative;
@@ -134,8 +121,24 @@ ion-icon:active {
   top: 0;
   color: white;
   background: rgba(0, 0, 0, 0.5);
-  padding: 15px 30px 15px 30px;
+  padding: 15px;
   border-radius: 0px 0 0 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+a > ion-con,
+ion-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-decoration: none;
+  color: white;
+}
+
+ion-icon:active {
+  transform: scale(1.05);
 }
 
 .controls {
