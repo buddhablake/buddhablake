@@ -17,12 +17,12 @@ body {
 
 header {
   background: white;
-  height: 300px;
+
   width: 100%;
   background: black;
   display: flex;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 form {
@@ -55,14 +55,14 @@ ion-icon:active {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  height: 70vh;
+
   background: black;
   display: none;
 }
 
 .image-container {
   position: absolute;
-  height: 70vh;
+
   width: 100%;
   display: none;
   background-size: cover;

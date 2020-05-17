@@ -1,7 +1,9 @@
 $(() => {
   //start after
   //lets call the pexels api
-  $("body").css("height", $("document").innerHeight());
+  const $height = $(window).innerHeight();
+  console.log($height);
+  $("header").css("height", `${$height}px`);
   const getImages = (e) => {
     $(".spell-check").remove();
     $(".images-container").empty();
@@ -19,14 +21,19 @@ $(() => {
       (images) => {
         console.log(images);
 
-        $("header").animate({ height: "20vh" }, 200);
+        $("header").animate({ height: $height * 0.2 }, 200);
 
         if (images.photos.length <= 0) {
           spellCheck();
         } else {
           for (let i = 0; i < 30; i++) {
-            $(".images-container").show();
-            $(".controls").css("display", "flex").show();
+            $(".images-container")
+              .css("height", $height * 0.7)
+              .show();
+            $(".controls")
+              .css("display", "flex")
+              .css("height", $height * 0.1)
+              .show();
             //creates and appends image(s)
 
             //creates the image
@@ -34,6 +41,7 @@ $(() => {
 
             const $imageContainer = $("<div>")
               .addClass("image-container")
+              .css("height", $height * 0.7)
               .css("background-image", `url(${$imgSrc})`)
               .appendTo($(".images-container"));
             //
