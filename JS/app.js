@@ -1,9 +1,10 @@
 $(() => {
   //start after
   //lets call the pexels api
-  const $height = $(window).innerHeight();
+  let $height = $(window).innerHeight();
   console.log($height);
   $("header").css("height", `${$height}px`);
+
   const getImages = (e) => {
     $(".spell-check").remove();
     $(".images-container").empty();
@@ -21,7 +22,9 @@ $(() => {
       (images) => {
         console.log(images);
 
-        $("header").animate({ height: $height * 0.2 }, 200);
+        $("header")
+          .animate({ height: $height * 0.2 }, 200)
+          .attr("id", "small");
 
         if (images.photos.length <= 0) {
           spellCheck();
@@ -115,7 +118,21 @@ $(() => {
       .appendTo($spellCheckMsg);
   };
 
+  const resizeElems = () => {
+    $height = $(window).innerHeight();
+    if ($("header").attr("id") === "small") {
+      $("header").css("height", $height * 0.2);
+      $(".images-container").css("height", $height * 0.7);
+
+      $(".controls").css("height", $height * 0.1);
+    } else {
+      $("header").css("height", $height);
+    }
+  };
+
   //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
+
+  $(window).resize(resizeElems);
 
   $("form").on("submit", (e) => {
     getImages();

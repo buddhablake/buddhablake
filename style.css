@@ -96,6 +96,7 @@ ion-icon:active {
 .controls {
   width: 100%;
   display: none;
+  z-index: 2;
 }
 
 #prev-btn,
