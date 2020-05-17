@@ -120,14 +120,19 @@ $(() => {
 
   const resizeElems = () => {
     $height = $(window).innerHeight();
-    if ($("header").attr("id") === "small") {
-      $("header").css("height", $height * 0.2);
-      $(".images-container").css("height", $height * 0.7);
+    setTimeout(() => {
+      if ($("header").attr("id") === "small") {
+        $("header").css("height", $height * 0.2);
 
-      $(".controls").css("height", $height * 0.1);
-    } else {
-      $("header").css("height", $height);
-    }
+        $(".images-container").css("height", $height * 0.7);
+
+        $(".image-container").css("height", $height * 0.7);
+
+        $(".controls").css("height", $height * 0.1);
+      } else {
+        $("header").css("height", $height);
+      }
+    }, 300);
   };
 
   //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
