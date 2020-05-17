@@ -1,13 +1,13 @@
 $(() => {
   //start after
   //lets call the pexels api
-
+  $("body").css("height", $("document").innerHeight());
   const getImages = (e) => {
     $(".spell-check").remove();
     $(".images-container").empty();
 
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
-    const userQuery = $("input").val() || "mountains";
+    const userQuery = $("input").val();
 
     $.ajax({
       method: "GET",
@@ -25,8 +25,8 @@ $(() => {
           spellCheck();
         } else {
           for (let i = 0; i < 30; i++) {
-            $(".images-container").show(200);
-            $(".controls").css("display", "flex").show(200);
+            $(".images-container").show();
+            $(".controls").css("display", "flex").show();
             //creates and appends image(s)
 
             //creates the image

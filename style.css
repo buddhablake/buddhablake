@@ -105,8 +105,8 @@ ion-icon:active {
   user-select: none;
   cursor: pointer;
   border: none;
-  background: grey;
-  color: black;
+  background: black;
+  color: white;
   font-size: 2em;
 
   transition: all 0.1s ease;
@@ -115,8 +115,8 @@ ion-icon:active {
 
 #prev-btn:active,
 #next-btn:active {
-  background: black;
-  color: white;
+  background: grey;
+  color: black;
 }
 
 .spell-check {
