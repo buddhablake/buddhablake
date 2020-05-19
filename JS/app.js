@@ -1,18 +1,29 @@
 $(() => {
-  //start after
-  //lets call the pexels api
+//start after
+
+  //height of window to be used dynamic element sizing.
   let $height = $(window).innerHeight();
-  console.log($height);
+
+  //Onload sets the height of the header to the height of the window.
   $("header").css("height", `${$height}px`);
 
+  //lets call the pexels api
   const getImages = (e) => {
+
+    //API Key
+    const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
+
+    //user search query
+    const userQuery = $("input").val();
+
+
+    //Cleans up the body to make way for search results
     $(".spell-check-container").remove();
     $(".images-container").empty();
     $(".pexels-link").remove();
 
-    const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
-    const userQuery = $("input").val();
 
+    //Begin API call
     $.ajax({
       method: "GET",
       beforeSend: function (auth) {
@@ -21,23 +32,26 @@ $(() => {
       url: `https://api.pexels.com/v1/search?query=${userQuery}&per_page=30&page=1`,
     }).then(
       (images) => {
-        console.log(images);
 
+        //Moves header to top of page and adds required styling
         $("header")
           .animate({ height: $height * 0.15 }, 200)
           .attr("id", "small")
           .addClass("secondary-header");
 
+        //Repositions logo and search inout
         $(".background-filter").addClass("secondary-filter");
-
+        //Resizes searhc input
         $("input").addClass("secondary-input");
-
+        //removes tagline
         $(".h1-header").remove();
-        // $(".logo").remove();
 
+        //Checks to make sure user query returned at least one image. If not spellcheck function is called
         if (images.photos.length <= 0) {
           spellCheck();
         } else {
+
+          //creates slideshow of images
           for (let i = 0; i < 30; i++) {
             $(".images-container")
               .css("height", $height * 0.75)
@@ -56,10 +70,6 @@ $(() => {
               .css("height", $height * 0.75)
               .css("background-image", `url(${$imgSrc})`)
               .appendTo($(".images-container"));
-            //
-            // const $image = $("<img>")
-            //   .attr("src", $imgSrc)
-            //   .appendTo($imageContainer);
 
             //creates link back to photographer
             const $photographerLink = $('<a target="_blank">')
@@ -105,20 +115,23 @@ $(() => {
                 $tempForCopy.remove();
               });
 
-            //create the expand icon and c2c functionality
+            //create the expand icon and link
             const $imgDownloadIcon = $(`<a href="${$imgSrc}" target="_blank">`)
               .html(`<ion-icon name="expand-outline"></ion-icon>`)
               .appendTo($imgOptions);
           }
         }
+        //resets the search input value
         $("input").val("");
       },
       (error) => {
-        $(".images-container").html("<h1>Why????? Why??????</h1>");
+        spellCheck()
       }
     );
   };
 
+
+  //Provides error message when no images math user query, typically the result of spelling error
   const spellCheck = () => {
     $(".images-container").hide();
     $(".controls").hide();
@@ -132,6 +145,8 @@ $(() => {
       .appendTo($("body"));
   };
 
+
+//Dynamically resizes page elements in realtime whenever the window changes size.
   const resizeElems = () => {
     $height = $(window).innerHeight();
     setTimeout(() => {
@@ -149,8 +164,10 @@ $(() => {
     }, 300);
   };
 
+//invokes the resize Elems fucntion
   $(window).resize(resizeElems);
 
+//event listener for search input submissions
   $("form").on("submit", (e) => {
     getImages();
     e.preventDefault();

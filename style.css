@@ -186,18 +186,3 @@ ion-icon:active {
   align-items: center;
   padding: 2em;
 }
-
-footer {
-  margin-top: 20px;
-  background: black;
-  width: 100%;
-  height: 125px;
-  text-align: center;
-  line-height: 125px;
-  font-size: 2em;
-}
-
-footer a {
-  color: white;
-  text-decoration: none;
-}
