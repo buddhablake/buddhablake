@@ -76,6 +76,12 @@ input {
   line-height: 70px;
 }
 
+.pexels-link {
+  color: white;
+  margin-top: 40px;
+  font-size: 1.5em;
+}
+
 .secondary-input {
   height: 40px;
   font-size: 2em;

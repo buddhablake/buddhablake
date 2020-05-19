@@ -1,3 +1,5 @@
-# This should make an h1
+#1ClickPic
 
-This should be a p tag
+Beautiful placeholder images in one click.
+
+**API**: [Pexels API](https://www.pexels.com/api/)
