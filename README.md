@@ -18,6 +18,8 @@
 
 - While the site is mobile responsive, it was difficult to translate the UI to mobile and maintain the desired user experience. I don’t see this being a problem as the audience this was developed for will likely be interacting with it on desktop. In the future I would likely strip down the mobile functionality to “Search & Save.” Mobile users could search for photos and save them to their account to access later on desktop when prototyping.
 
+# Tutorial
+
 ## Get images in just one click.
 
 ### Search for images
