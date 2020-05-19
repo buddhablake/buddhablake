@@ -26,14 +26,14 @@
 
 ![](https://media.giphy.com/media/WrfZ851t68PZKAWo96/giphy.gif)
 
-## Click to copy URL
+### Click to copy URL
 
 ![](https://media.giphy.com/media/dy4n5t0Tsy97sgCtU4/giphy.gif)
 
-## Click to copy HTML image interacting
+### Click to copy HTML image interacting
 
 ![](https://media.giphy.com/media/JsnBfAG7qlqyl8p9Ja/giphy.gif)
 
-## Click to view full-size and download from pexels
+### Click to view full-size and download from pexels
 
 ![](https://media.giphy.com/media/ducyIckQps1UpPfQEB/giphy.gif)
