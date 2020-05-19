@@ -1,4 +1,4 @@
-#1ClickPic
+# 1ClickPic
 
 Beautiful placeholder images in one click.
 
