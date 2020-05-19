@@ -8,6 +8,7 @@ $(() => {
   const getImages = (e) => {
     $(".spell-check-container").remove();
     $(".images-container").empty();
+    $(".pexels-link").remove();
 
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
     const userQuery = $("input").val();
@@ -78,6 +79,7 @@ $(() => {
               .attr("name", "link-outline")
               .appendTo($imgOptions)
               .on("click", () => {
+                //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
                 let $tempForCopy = $("<input>").appendTo($("body"));
                 $tempForCopy.val($imgSrc).select();
                 document.execCommand("copy");
@@ -96,6 +98,7 @@ $(() => {
               .attr("name", "code-slash-outline")
               .appendTo($imgOptions)
               .on("click", () => {
+                //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
                 let $tempForCopy = $("<input>").appendTo($("body"));
                 $tempForCopy.val($imgTag.html()).select();
                 document.execCommand("copy");
@@ -145,8 +148,6 @@ $(() => {
       }
     }, 300);
   };
-
-  //Handles the copying of either the img tag or the link to the user clipboard. Heavily inspired by this blog post: https://www.isquaretechnologies.com/jquery-click-copy-clipboard/. The name of my function is the ssame as articles as it is the most semanctic name for the function.
 
   $(window).resize(resizeElems);
 
