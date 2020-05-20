@@ -1,5 +1,5 @@
 $(() => {
-//start after
+  //start after
 
   //height of window to be used dynamic element sizing.
   let $height = $(window).innerHeight();
@@ -9,19 +9,16 @@ $(() => {
 
   //lets call the pexels api
   const getImages = (e) => {
-
     //API Key
     const key = "563492ad6f9170000100000127c6c722c0654acb97540fefc7b78d86";
 
     //user search query
     const userQuery = $("input").val();
 
-
     //Cleans up the body to make way for search results
     $(".spell-check-container").remove();
     $(".images-container").empty();
     $(".pexels-link").remove();
-
 
     //Begin API call
     $.ajax({
@@ -32,7 +29,6 @@ $(() => {
       url: `https://api.pexels.com/v1/search?query=${userQuery}&per_page=30&page=1`,
     }).then(
       (images) => {
-
         //Moves header to top of page and adds required styling
         $("header")
           .animate({ height: $height * 0.15 }, 200)
@@ -50,7 +46,6 @@ $(() => {
         if (images.photos.length <= 0) {
           spellCheck();
         } else {
-
           //creates slideshow of images
           for (let i = 0; i < 30; i++) {
             $(".images-container")
@@ -94,6 +89,8 @@ $(() => {
                 $tempForCopy.val($imgSrc).select();
                 document.execCommand("copy");
                 $tempForCopy.remove();
+
+                c2cSuccessMsg();
               });
 
             //imgTag
@@ -113,6 +110,8 @@ $(() => {
                 $tempForCopy.val($imgTag.html()).select();
                 document.execCommand("copy");
                 $tempForCopy.remove();
+
+                c2cSuccessMsg();
               });
 
             //create the expand icon and link
@@ -125,11 +124,22 @@ $(() => {
         $("input").val("");
       },
       (error) => {
-        spellCheck()
+        spellCheck();
       }
     );
   };
 
+  //Displays "copid to clipboard" message
+  const c2cSuccessMsg = () => {
+    let $c2cSuccess = $("<div>")
+      .addClass("c2c-success")
+      .text("Copied to clipboard!")
+      .appendTo($(".images-container"));
+
+    setTimeout(() => {
+      $c2cSuccess.hide();
+    }, 800);
+  };
 
   //Provides error message when no images math user query, typically the result of spelling error
   const spellCheck = () => {
@@ -145,8 +155,7 @@ $(() => {
       .appendTo($("body"));
   };
 
-
-//Dynamically resizes page elements in realtime whenever the window changes size.
+  //Dynamically resizes page elements in realtime whenever the window changes size.
   const resizeElems = () => {
     $height = $(window).innerHeight();
     setTimeout(() => {
@@ -164,10 +173,10 @@ $(() => {
     }, 300);
   };
 
-//invokes the resize Elems fucntion
+  //invokes the resize Elems fucntion
   $(window).resize(resizeElems);
 
-//event listener for search input submissions
+  //event listener for search input submissions
   $("form").on("submit", (e) => {
     getImages();
     e.preventDefault();

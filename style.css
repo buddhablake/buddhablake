@@ -16,7 +16,7 @@ body {
 }
 
 header {
-  background-image: url("images/photo-of-person-holding-camera-3014011.jpg");
+  background-image: url("images/guy-sitting-with-camera.jpeg");
   background-size: cover;
   background-position: bottom;
   width: 100%;
@@ -151,7 +151,7 @@ ion-icon:active {
   width: 100%;
   display: none;
   z-index: 2;
-  background-image: url("images/photo-of-person-holding-camera-3014011.jpg");
+  background-image: url("images/guy-sitting-with-camera.jpeg");
   background-position: bottom;
   background-size: cover;
   border-top: 3px solid white;
@@ -185,4 +185,16 @@ ion-icon:active {
   justify-content: center;
   align-items: center;
   padding: 2em;
+}
+
+.c2c-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2em;
+  height: 75vh;
 }
